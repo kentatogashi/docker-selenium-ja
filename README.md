@@ -21,12 +21,20 @@ $ docker build -t 'kentatogashi/docker-selenium-ja' .
 Docker Hubに登録しているので、手早く試すのであれば、イメージ作成は必要ない。
 
 ```sh
-$ docker run -dt -p 4444:4444 -p 5901:5901 kentatogashi/docker-selenium-ja
+$ docker run -dt -e -p 4444:4444 -p 5901:5901 kentatogashi/docker-selenium-ja
+```
+
+SeleniumとVNCのポート番号を変更したい時
+
+```sh
+$ export SEL_PORT=4445
+$ export VNC_PORT=5902
+$ docker run -dt -e SEL_PORT=$SEL_PORT -e VNC_PORT=$VNC_PORT -p $SEL_PORT:$SEL_PORT -p $VNC_PORT:$VNC_PORT kentatogashi/docker-selenium-ja
 ```
 
 ## 補足
 
-4444番はSelenium用、5901番はVNC用
+デフォルト、4444番で、Selenium用、5901番で、VNCが動く。
 
 VNCのパスワードは、secret
 
